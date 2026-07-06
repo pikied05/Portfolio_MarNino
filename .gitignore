@@ -1,0 +1,55 @@
+# Dependenciasgit status
+node_modules/
+.pnp/
+.pnp.js
+yarn-error.log
+npm-debug.log*
+
+# Build
+build/
+dist/
+out/
+.next/
+
+# Variables de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos del sistema Windows
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Testing
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Otros
+*.min.js
+*.map
+*.tsbuildinfo
+node_modules
+node_modules
+node_modules
+*.env
