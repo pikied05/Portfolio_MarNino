@@ -95,7 +95,7 @@ const projects: Project[] = [
 
 // ── Asset helpers ─────────────────────────────────────────────────────────────
 
-function Mariquita({ size = 52, style = {} }: { size?: number; style?: React.CSSProperties }) {
+function Mariquita({ size = 100, style = {} }: { size?: number; style?: React.CSSProperties }) {
   return (
     <img
       src={mariquitaImg}
@@ -173,10 +173,10 @@ function Nav({ page, setPage, onCream }: { page: Page; setPage: (p: Page) => voi
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5">
         <button onClick={() => setPage("inicio")} className="flex items-center gap-1.5 group">
-          <Mariquita size={26} />
+          <Mariquita size={46} />
           <span
             className="group-hover:opacity-60 transition-opacity"
-            style={{ fontFamily: "'Great Vibes', cursive", fontSize: "1.5rem", color: onCream ? "#C01347" : "#F2E8A2", lineHeight: 1 }}
+            style={{ fontFamily: "WonderfulParty", fontSize: "1.5rem", color: onCream ? "#C01347" : "#F2E8A2", lineHeight: 1 }}
           >
             mar.
           </span>
@@ -212,7 +212,7 @@ function Nav({ page, setPage, onCream }: { page: Page; setPage: (p: Page) => voi
               <button
                 key={id}
                 onClick={() => { setPage(id); setOpen(false); }}
-                style={{ fontFamily: "'Great Vibes', cursive", fontSize: "2.8rem", color: "#F2E8A2" }}
+                style={{ fontFamily: "WonderfulParty", fontSize: "2.8rem", color: "#F2E8A2" }}
               >
                 {id === "sobre" ? "sobre mí" : id === "cv" ? "curriculum" : id}
               </button>
@@ -230,7 +230,7 @@ function CoverPage({ setPage }: { setPage: (p: Page) => void }) {
   return (
     <div className="relative min-h-screen overflow-hidden flex flex-col" style={{ background: "#E85A9D" }}>
       <div className="absolute top-20 left-8 z-10 max-w-[190px]">
-        <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.7rem", color: "rgba(242,232,162,0.65)", lineHeight: 1.8, letterSpacing: "0.04em" }}>
+        <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.7rem", color: "rgba(242,232,162,0.65)", lineHeight: 1.8, letterSpacing: "0.04em" }}>
           Mariana Hernández Niño<br />
           ilustración · fotografía<br />
           videoperformance<br />
@@ -249,17 +249,17 @@ function CoverPage({ setPage }: { setPage: (p: Page) => void }) {
         <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}>
           <h1
             className="leading-[0.88]"
-            style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(5rem, 22vw, 18rem)", color: "#F2E8A2", textShadow: "0 4px 60px rgba(192,19,71,0.18)" }}
+            style={{ fontFamily: "WonderfulParty", fontSize: "clamp(5rem, 22vw, 18rem)", color: "#F2E8A2", textShadow: "0 4px 60px rgba(192,19,71,0.18)" }}
           >
             mar.
           </h1>
         </motion.div>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }} className="mt-6 flex items-center gap-6">
-          <Mariquita size={44} />
+          <Mariquita size={64} />
           <button
             onClick={() => setPage("portafolio")}
             className="group flex items-center gap-3 hover:gap-5 transition-all duration-300"
-            style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100, fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,232,162,0.75)" }}
+            style={{ fontFamily: "HelveticaNeue", fontWeight: 100, fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,232,162,0.75)" }}
           >
             ver obra
             <span className="inline-block h-px w-8 group-hover:w-12 transition-all duration-300" style={{ background: "rgba(242,232,162,0.55)" }} />
@@ -279,9 +279,9 @@ function AboutPage() {
     <div className="min-h-screen pt-28 pb-24" style={{ background: "#F5F0EA" }}>
       <div className="max-w-6xl mx-auto px-8 md:px-14">
 
-        <p className="mb-1 text-xs uppercase" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100, letterSpacing: "0.35em", color: "#E85A9D" }}>(01)</p>
-        <h2 className="mb-10" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(3.5rem, 9vw, 7.5rem)", color: "#C01347", lineHeight: 1 }}>
-          sobre mí
+        <p className="mb-1 text-xs uppercase" style={{ fontFamily: "HelveticaNeue", fontWeight: 100, letterSpacing: "0.35em", color: "#E85A9D" }}>(01)</p>
+        <h2 className="mb-10" style={{ fontFamily: "WonderfulParty", fontSize: "clamp(3.5rem, 9vw, 7.5rem)", color: "#C01347", lineHeight: 1 }}>
+          sobre mi
         </h2>
 
         {/* Tab toggle */}
@@ -294,7 +294,7 @@ function AboutPage() {
                 border: `1px solid ${tab === t ? "#C01347" : "rgba(192,19,71,0.25)"}`,
                 borderRadius: "999px",
                 padding: "5px 20px",
-                fontFamily: "'Josefin Sans', sans-serif",
+                fontFamily: "HelveticaNeue",
                 fontWeight: 100,
                 fontSize: "0.68rem",
                 letterSpacing: "0.18em",
@@ -321,13 +321,13 @@ function AboutPage() {
               className="grid md:grid-cols-[1fr_1.1fr] gap-16 md:gap-24 items-start"
             >
               <div className="flex flex-col gap-7 pt-2">
-                <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.95rem", color: "#2A1520", lineHeight: 1.95 }}>
+                <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.95rem", color: "#2A1520", lineHeight: 1.95 }}>
                   Con eme de mariquita (Mariana Niño) nació en Xalapa, Veracruz, en 2005 y actualmente radica en Puebla. Es artista multidisciplinar en formación y cursa la Licenciatura en Arte Contemporáneo en la Universidad Iberoamericana Puebla.
                 </p>
-                <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.95rem", color: "#2A1520", lineHeight: 1.95 }}>
+                <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.95rem", color: "#2A1520", lineHeight: 1.95 }}>
                   Su práctica se desarrolla a través del video, el cuerpo y la fotografía, desde donde investiga y construye relaciones que parten de lo autobiográfico. Trabaja con experiencias íntimas como una forma de pensar el afecto, las relaciones y la manera en que los cuerpos se hacen visibles en el espacio.
                 </p>
-                <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.95rem", color: "#2A1520", lineHeight: 1.95 }}>
+                <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.95rem", color: "#2A1520", lineHeight: 1.95 }}>
                   Su trabajo se ha vinculado con procesos editoriales y expositivos: participó en la subasta silenciosa Todos ponen de Celia Galería-Taller en Puebla (2026) y tiene próximas publicaciones en revistas lésbicas como U-Haul Magazine (Virginia, EUA) y Violetas (Ciudad de México). En 2025 fue finalista del Premio MX en la categoría de diseño de espacios interiores con el proyecto en equipo (contra)literal.
                 </p>
                 <div className="w-8 h-px" style={{ background: "#C01347" }} />
@@ -338,7 +338,7 @@ function AboutPage() {
                       style={{
                         border: "1px solid #E85A9D", borderRadius: "999px",
                         padding: "4px 14px",
-                        fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100,
+                        fontFamily: "HelveticaNeue", fontWeight: 100,
                         fontSize: "0.68rem", letterSpacing: "0.12em",
                         textTransform: "uppercase" as const, color: "#C01347",
                       }}
@@ -348,9 +348,9 @@ function AboutPage() {
                   ))}
                 </div>
                 <div className="flex items-center gap-3 pt-1">
-                  <Mariquita size={32} />
-                  <p style={{ fontFamily: "'Great Vibes', cursive", fontSize: "1.5rem", color: "#C01347" }}>
-                    @conemedemariquita
+                  <Mariquita size={52} />
+                  <p style={{ fontFamily: "WonderfulParty", fontSize: "1.5rem", color: "#C01347" }}>
+                    conemedemariquita
                   </p>
                 </div>
               </div>
@@ -377,7 +377,7 @@ function AboutPage() {
               transition={{ duration: 0.4 }}
               className="max-w-2xl"
             >
-              <p className="mb-6" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "3rem", color: "#C01347", lineHeight: 1 }}>
+              <p className="mb-6" style={{ fontFamily: "'WonderfulParty', cursive", fontSize: "3rem", color: "#C01347", lineHeight: 1 }}>
                 statement
               </p>
               <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.95rem", color: "#2A1520", lineHeight: 2 }}>
@@ -426,7 +426,7 @@ function CVPage() {
       <div className="max-w-6xl mx-auto px-8 md:px-14">
 
         <p className="mb-1 text-xs uppercase" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100, letterSpacing: "0.35em", color: "#E85A9D" }}>(04)</p>
-        <h2 className="mb-16" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(3.5rem, 9vw, 7.5rem)", color: "#C01347", lineHeight: 1 }}>
+        <h2 className="mb-16" style={{ fontFamily: "WonderfulParty", fontSize: "clamp(3.5rem, 9vw, 7.5rem)", color: "#C01347", lineHeight: 1 }}>
           curriculum vitae
         </h2>
 
@@ -434,7 +434,7 @@ function CVPage() {
 
           {/* Trayectoria */}
           <div>
-            <p className="mb-8" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "2rem", color: "#C01347" }}>
+            <p className="mb-8" style={{ fontFamily: "WonderfulParty", fontSize: "2rem", color: "#C01347" }}>
               trayectoria
             </p>
             {trayectoria.map((item, i) => (
@@ -451,8 +451,8 @@ function CVPage() {
 
           {/* Formación */}
           <div>
-            <p className="mb-8" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "2rem", color: "#C01347" }}>
-              formación académica
+            <p className="mb-8" style={{ fontFamily: "WonderfulParty", fontSize: "2rem", color: "#C01347" }}>
+              formacion academica
             </p>
             {formacion.map((item, i) => (
               <div key={i} className="mb-8 pb-8" style={divider}>
@@ -466,7 +466,7 @@ function CVPage() {
 
             {/* Catarina decorativa */}
             <div className="mt-12 flex justify-start">
-              <Mariquita size={40} />
+              <Mariquita size={60} />
             </div>
           </div>
 
@@ -511,7 +511,7 @@ function PortfolioPage() {
       >
         {/* LEFT: static index */}
         <div
-          className="flex flex-col py-8 px-6 overflow-y-auto"
+          className="flex flex-col py-8 px-6 overflow-y-auto no-scrollbar"
           style={{ borderRight: "1px solid rgba(192,19,71,0.12)" }}
         >
           <p className="mb-6 text-xs" style={{ ...labelStyle, color: "#E85A9D" }}>
@@ -562,7 +562,7 @@ function PortfolioPage() {
 
           {/* Catarina at bottom */}
           <div className="mt-auto pt-8 flex justify-center">
-            <Mariquita size={36} />
+            <Mariquita size={56} />
           </div>
         </div>
 
@@ -605,35 +605,35 @@ function PortfolioPage() {
               transition={{ duration: 0.35 }}
               className="flex flex-col gap-4"
             >
-              <p className="text-xs" style={{ ...labelStyle, color: "#E85A9D", fontSize: "0.6rem" }}>
+              <p className="text-sm" style={{ ...labelStyle, color: "#E85A9D", fontSize: "0.6rem" }}>
                 {activeProject.num} / {projects.length}
               </p>
 
-              <h3
+              <h5
                 style={{
-                  fontFamily: "'Great Vibes', cursive",
+                  fontFamily: "Hariki",
                   fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
                   color: "#C01347",
                   lineHeight: 1.15,
                 }}
               >
                 {activeProject.title}
-              </h3>
+              </h5>
 
               <div className="flex flex-col gap-1">
-                <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 400, fontSize: "0.78rem", color: "#1A0810" }}>
+                <p style={{ fontFamily: "Helvetica Neue", fontWeight: 400, fontSize: "0.78rem", color: "#1A0810" }}>
                   {activeProject.year}
                 </p>
-                <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.75rem", color: "rgba(26,8,16,0.65)", lineHeight: 1.5 }}>
+                <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.75rem", color: "rgba(26,8,16,0.65)", lineHeight: 1.5 }}>
                   {activeProject.medium}
                 </p>
                 {activeProject.dimensions && (
-                  <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.75rem", color: "rgba(26,8,16,0.55)" }}>
+                  <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.75rem", color: "rgba(26,8,16,0.55)" }}>
                     {activeProject.dimensions}
                   </p>
                 )}
                 {activeProject.duration && (
-                  <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.75rem", color: "rgba(26,8,16,0.55)" }}>
+                  <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.75rem", color: "rgba(26,8,16,0.55)" }}>
                     {activeProject.duration}
                   </p>
                 )}
@@ -641,12 +641,12 @@ function PortfolioPage() {
 
               <div className="w-8 h-px" style={{ background: "#C01347", opacity: 0.4 }} />
 
-              <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.82rem", color: "#2A1520", lineHeight: 1.85 }}>
+              <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.82rem", color: "#2A1520", lineHeight: 1.85 }}>
                 {activeProject.description}
               </p>
 
               {activeProject.credit && (
-                <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.72rem", color: "rgba(26,8,16,0.45)", fontStyle: "italic" }}>
+                <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.72rem", color: "rgba(26,8,16,0.45)", fontStyle: "italic" }}>
                   {activeProject.credit}
                 </p>
               )}
@@ -691,7 +691,7 @@ function PortfolioPage() {
               <p className="text-xs mb-0.5" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100, fontSize: "0.6rem", letterSpacing: "0.3em", textTransform: "uppercase" as const, color: p.id === activeId ? "#E85A9D" : "rgba(192,19,71,0.35)" }}>
                 {p.num}
               </p>
-              <p className="text-xs" style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: p.id === activeId ? 400 : 300, color: p.id === activeId ? "#C01347" : "rgba(26,8,16,0.45)", fontSize: "0.72rem", maxWidth: "120px", lineHeight: 1.3 }}>
+              <p className="text-xs" style={{ fontFamily: "Helvetica Neue", fontWeight: p.id === activeId ? 400 : 300, color: p.id === activeId ? "#C01347" : "rgba(26,8,16,0.45)", fontSize: "0.72rem", maxWidth: "120px", lineHeight: 1.3 }}>
                 {p.title}
               </p>
             </button>
@@ -700,19 +700,19 @@ function PortfolioPage() {
 
         {/* Info */}
         <div className="px-6 mb-6">
-          <h3 style={{ fontFamily: "'Great Vibes', cursive", fontSize: "2rem", color: "#C01347", lineHeight: 1.1, marginBottom: "0.5rem" }}>
+          <h3 style={{ fontFamily: "WonderfulParty", fontSize: "2rem", color: "#C01347", lineHeight: 1.1, marginBottom: "0.5rem" }}>
             {activeProject.title}
           </h3>
-          <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.8rem", color: "rgba(26,8,16,0.6)", lineHeight: 1.5, marginBottom: "0.25rem" }}>
+          <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.8rem", color: "rgba(26,8,16,0.6)", lineHeight: 1.5, marginBottom: "0.25rem" }}>
             {activeProject.year} · {activeProject.medium}
           </p>
-          {activeProject.duration && <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.75rem", color: "rgba(26,8,16,0.5)" }}>{activeProject.duration}</p>}
+          {activeProject.duration && <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.75rem", color: "rgba(26,8,16,0.5)" }}>{activeProject.duration}</p>}
           <div className="w-6 h-px my-4" style={{ background: "#C01347", opacity: 0.4 }} />
-          <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.85rem", color: "#2A1520", lineHeight: 1.85 }}>
+          <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.85rem", color: "#2A1520", lineHeight: 1.85 }}>
             {activeProject.description}
           </p>
           {activeProject.credit && (
-            <p className="mt-3" style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "0.72rem", color: "rgba(26,8,16,0.4)", fontStyle: "italic" }}>
+            <p className="mt-3" style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.72rem", color: "rgba(26,8,16,0.4)", fontStyle: "italic" }}>
               {activeProject.credit}
             </p>
           )}
@@ -751,24 +751,24 @@ function ContactPage() {
         <p className="mb-4 text-xs uppercase" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100, letterSpacing: "0.35em", color: "rgba(242,232,162,0.5)" }}>
           (03)
         </p>
-        <h2 className="mb-14" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(3.5rem, 10vw, 7rem)", color: "#F2E8A2", lineHeight: 1 }}>
+        <h2 className="mb-14" style={{ fontFamily: "WonderfulParty", fontSize: "clamp(3.5rem, 10vw, 7rem)", color: "#F2E8A2", lineHeight: 1 }}>
           contacto
         </h2>
         <div className="flex flex-col gap-5 items-center">
-          <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, fontSize: "1.05rem", color: "#F2E8A2" }}>
+          <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "1.05rem", color: "#F2E8A2" }}>
             Mariana Hernández Niño
           </p>
-          <a href="mailto:mariananino078@gmail.com" className="flex items-center gap-3 transition-opacity hover:opacity-60" style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, color: "#F2E8A2", fontSize: "0.9rem" }}>
+          <a href="mailto:mariananino078@gmail.com" className="flex items-center gap-3 transition-opacity hover:opacity-60" style={{ fontFamily: "Helvetica Neue", fontWeight: 300, color: "#F2E8A2", fontSize: "0.9rem" }}>
             <Mail size={13} style={{ opacity: 0.6 }} /> mariananino078@gmail.com
           </a>
-          <a href="https://instagram.com/conemedemariquita" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 transition-opacity hover:opacity-60" style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, color: "#F2E8A2", fontSize: "0.9rem" }}>
+          <a href="https://instagram.com/conemedemariquita" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 transition-opacity hover:opacity-60" style={{ fontFamily: "Helvetica Neue", fontWeight: 300, color: "#F2E8A2", fontSize: "0.9rem" }}>
             <Instagram size={13} style={{ opacity: 0.6 }} /> ig. @conemedemariquita
           </a>
-          <a href="tel:2283149119" className="flex items-center gap-3 transition-opacity hover:opacity-60" style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 300, color: "#F2E8A2", fontSize: "0.9rem" }}>
+          <a href="tel:2283149119" className="flex items-center gap-3 transition-opacity hover:opacity-60" style={{ fontFamily: "Helvetica Neue", fontWeight: 300, color: "#F2E8A2", fontSize: "0.9rem" }}>
             <Phone size={13} style={{ opacity: 0.6 }} /> 2283149119
           </a>
         </div>
-        <div className="mt-14"><Mariquita size={54} /></div>
+        <div className="mt-14"><Mariquita size={74} /></div>
       </motion.div>
     </div>
   );

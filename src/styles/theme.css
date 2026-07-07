@@ -158,13 +158,19 @@
   }
 
   h3 {
-    font-size: var(--text-lg);
+    font-size: var(--text-m);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   h4 {
     font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+  
+  h5 {
+    font-size: var(--text-sm);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
