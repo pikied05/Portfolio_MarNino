@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Instagram, Mail, Phone, X, Menu } from "lucide-react";
 
 import mariquitaImg from "@/imports/mariquita.png";
+import marFoto from "@/imports/contraportada_Mar.jpg";
 import starImg0 from "@/imports/estrellad.png";
 import starImg1 from "@/imports/estrellad2.png";
 import starImg2 from "@/imports/portafolio_2025__1_-2.png";
@@ -280,8 +281,8 @@ function AboutPage() {
       <div className="max-w-6xl mx-auto px-8 md:px-14">
 
         <p className="mb-1 text-xs uppercase" style={{ fontFamily: "HelveticaNeue", fontWeight: 100, letterSpacing: "0.35em", color: "#E85A9D" }}>(01)</p>
-        <h2 className="mb-10" style={{ fontFamily: "WonderfulParty", fontSize: "clamp(3.5rem, 9vw, 7.5rem)", color: "#C01347", lineHeight: 1 }}>
-          sobre mi
+        <h2 className="mb-10" style={{ fontFamily: "Hariki", fontSize: "clamp(3.5rem, 9vw, 7.5rem)", color: "#C01347", lineHeight: 1 }}>
+          sobre mí
         </h2>
 
         {/* Tab toggle */}
@@ -357,7 +358,7 @@ function AboutPage() {
 
               <div className="relative md:order-2">
                 <img
-                  src="https://images.unsplash.com/photo-1619107187499-adbfd254e9ee?w=700&h=880&fit=crop&auto=format"
+                  src={marFoto}
                   alt="Mariana Hernández Niño"
                   className="w-full object-cover"
                   style={{ aspectRatio: "3/4", filter: "saturate(0.85) contrast(1.05)" }}
