@@ -127,6 +127,7 @@ function Star({
         display: "block",
         pointerEvents: "none",
         userSelect: "none",
+        mixBlendMode: "multiply",
         ...style,
       }}
     />
