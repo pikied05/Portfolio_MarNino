@@ -4,11 +4,11 @@ import { Instagram, Mail, Phone, X, Menu } from "lucide-react";
 
 import mariquitaImg from "@/imports/mariquita.png";
 import marFoto from "@/imports/contraportada_Mar.jpg";
-import starImg0 from "@/imports/estrellad.png";
-import starImg1 from "@/imports/estrellad2.png";
-import starImg2 from "@/imports/portafolio_2025__1_-2.png";
-import starImg3 from "@/imports/portafolio_2025__2_-2.png";
-import starImg4 from "@/imports/portafolio_2025__3_-2.png";
+import starImg0 from "@/imports/estrellas1.png";
+import starImg1 from "@/imports/estrellas2.png";
+import starImg2 from "@/imports/estrellas3.png";
+import starImg3 from "@/imports/estrellas4.png";
+import starImg4 from "@/imports/estrellas5.png";
 import img05 from "@/imports/portagolio_2026_con_eme_de_mariquita-05.png";
 import img06 from "@/imports/portagolio_2026_con_eme_de_mariquita-06.png";
 import img07 from "@/imports/portagolio_2026_con_eme_de_mariquita-07.png";
@@ -127,7 +127,6 @@ function Star({
         display: "block",
         pointerEvents: "none",
         userSelect: "none",
-        mixBlendMode: "multiply",
         ...style,
       }}
     />
