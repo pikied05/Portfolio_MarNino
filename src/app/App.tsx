@@ -9,12 +9,21 @@ import starImg1 from "@/imports/estrellas2.png";
 import starImg2 from "@/imports/estrellas3.png";
 import starImg3 from "@/imports/estrellas4.png";
 import starImg4 from "@/imports/estrellas5.png";
-import img05 from "@/imports/portagolio_2026_con_eme_de_mariquita-05.png";
-import img06 from "@/imports/portagolio_2026_con_eme_de_mariquita-06.png";
-import img07 from "@/imports/portagolio_2026_con_eme_de_mariquita-07.png";
-import img08 from "@/imports/portagolio_2026_con_eme_de_mariquita-08.png";
-import img09 from "@/imports/portagolio_2026_con_eme_de_mariquita-09.png";
-import img10 from "@/imports/portagolio_2026_con_eme_de_mariquita-10.png";
+import img05 from "@/imports/DSC_0781.jpeg";
+import img06 from "@/imports/DSC_0783.jpeg";
+import img07 from "@/imports/DSC_0785.jpeg";
+import img08 from "@/imports/IMG_1072.png";
+import img09 from "@/imports/IMG_1073.png";
+import img10 from "@/imports/IMG_1074.png";
+import img11 from "@/imports/IMG_7587.webp";
+import img12 from "@/imports/IMG_7588.webp";
+import img13 from "@/imports/IMG_7589.webp";
+import img14 from "@/imports/IMG_4248.png";
+import img15 from "@/imports/IMG_0279.png";
+import img16 from "@/imports/IMG_0297.png";
+import img17 from "@/imports/IMG_7456.jpeg";
+import img18 from "@/imports/IMG_7677.jpeg";
+import img19 from "@/imports/IMG_7596.jpeg";
 
 type Page = "inicio" | "sobre" | "portafolio" | "cv" | "contacto";
 
@@ -43,7 +52,7 @@ const projects: Project[] = [
     description:
       "Pintura corporal que explora la ausencia desde el cuerpo como mapa. A través de marcas que señalan memorias sensoriales, las líneas trazadas convierten el cuerpo en una brújula desde la cual la ausencia puede recorrerse y tomar forma.",
     credit: "Colaboración con Bugozen",
-    images: [img05, img06],
+    images: [img05, img06, img07],
   },
   {
     id: 2,
@@ -54,7 +63,7 @@ const projects: Project[] = [
     duration: "1 min con 49 segundos",
     description:
       "Video de mixed media que interviene imágenes cinematográficas para cuestionar la representación de la intimidad sáfica. A partir de su apropiación y desplazamiento, la pieza abre una tensión entre lo que se muestra y lo que se busca recuperar desde la experiencia propia.",
-    images: [img07],
+    images: [img08, img09, img10],
   },
   {
     id: 3,
@@ -65,7 +74,7 @@ const projects: Project[] = [
     dimensions: "35 × 25 cm",
     description:
       "Serie de tres collages que cruza imágenes de archivo con fragmentos de una carta de Emily Dickinson a Susan Gilbert. A través de la superposición, la pieza se acerca a una memoria afectiva fragmentada, donde lo íntimo persiste entre rastros y gestos.",
-    images: [img08],
+    images: [img11, img12, img13],
   },
   {
     id: 4,
@@ -77,7 +86,7 @@ const projects: Project[] = [
     description:
       "Videoperformance que explora el hogar como una construcción afectiva. A través de un espacio textil y una acción colectiva, el cuerpo se vuelve refugio, proponiendo el hogar como algo que se construye en los vínculos.",
     credit: "Registro: Lucero Tepox",
-    images: [img09],
+    images: [img15, img14, img16],
   },
   {
     id: 5,
@@ -86,11 +95,11 @@ const projects: Project[] = [
     year: "2026",
     medium: "Videoperformance con dispositivo textil",
     dimensions: "413 × 156 × 202 cm",
-    duration: "15 minutos",
+    duration: "25 minutos",
     description:
       "Video performance que explora las relaciones sáficas y la tensión de habitar el espacio público desde el afecto. A través de un dispositivo textil compartido, los cuerpos se aproximan, se sostienen y negocian su visibilidad frente a la mirada social.",
     credit: "Registro: Mar López",
-    images: [img10],
+    images: [img17, img18, img19],
   },
 ];
 
@@ -174,7 +183,7 @@ function Nav({ page, setPage, onCream }: { page: Page; setPage: (p: Page) => voi
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5">
         <button onClick={() => setPage("inicio")} className="flex items-center gap-1.5 group">
-          <Mariquita size={46} />
+          <Mariquita size={66} />
           <span
             className="group-hover:opacity-60 transition-opacity"
             style={{ fontFamily: "WonderfulParty", fontSize: "1.5rem", color: onCream ? "#C01347" : "#F2E8A2", lineHeight: 1 }}
@@ -256,11 +265,11 @@ function CoverPage({ setPage }: { setPage: (p: Page) => void }) {
           </h1>
         </motion.div>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }} className="mt-6 flex items-center gap-6">
-          <Mariquita size={64} />
+          <Mariquita size={72} />
           <button
             onClick={() => setPage("portafolio")}
             className="group flex items-center gap-3 hover:gap-5 transition-all duration-300"
-            style={{ fontFamily: "HelveticaNeue", fontWeight: 100, fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,232,162,0.75)" }}
+            style={{ fontFamily: "HelveticaNeue", fontWeight: 300, fontSize: "0.7rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,232,162,0.75)" }}
           >
             ver obra
             <span className="inline-block h-px w-8 group-hover:w-12 transition-all duration-300" style={{ background: "rgba(242,232,162,0.55)" }} />
@@ -296,7 +305,7 @@ function AboutPage() {
                 borderRadius: "999px",
                 padding: "5px 20px",
                 fontFamily: "HelveticaNeue",
-                fontWeight: 100,
+                fontWeight: 300,
                 fontSize: "0.68rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase" as const,
@@ -339,7 +348,7 @@ function AboutPage() {
                       style={{
                         border: "1px solid #E85A9D", borderRadius: "999px",
                         padding: "4px 14px",
-                        fontFamily: "HelveticaNeue", fontWeight: 100,
+                        fontFamily: "HelveticaNeue", fontWeight: 300,
                         fontSize: "0.68rem", letterSpacing: "0.12em",
                         textTransform: "uppercase" as const, color: "#C01347",
                       }}
@@ -349,7 +358,7 @@ function AboutPage() {
                   ))}
                 </div>
                 <div className="flex items-center gap-3 pt-1">
-                  <Mariquita size={52} />
+                  <Mariquita size={72} />
                   <p style={{ fontFamily: "WonderfulParty", fontSize: "1.5rem", color: "#C01347" }}>
                     conemedemariquita
                   </p>
@@ -426,7 +435,7 @@ function CVPage() {
     <div className="min-h-screen pt-28 pb-24" style={{ background: "#F5F0EA" }}>
       <div className="max-w-6xl mx-auto px-8 md:px-14">
 
-        <p className="mb-1 text-xs uppercase" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100, letterSpacing: "0.35em", color: "#E85A9D" }}>(04)</p>
+        <p className="mb-1 text-xs uppercase" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100, letterSpacing: "0.35em", color: "#E85A9D" }}>(03)</p>
         <h2 className="mb-16" style={{ fontFamily: "WonderfulParty", fontSize: "clamp(3.5rem, 9vw, 7.5rem)", color: "#C01347", lineHeight: 1 }}>
           curriculum vitae
         </h2>
@@ -435,7 +444,7 @@ function CVPage() {
 
           {/* Trayectoria */}
           <div>
-            <p className="mb-8" style={{ fontFamily: "WonderfulParty", fontSize: "2rem", color: "#C01347" }}>
+            <p className="mb-8" style={{ fontFamily: "Hariki", fontSize: "2rem", color: "#C01347" }}>
               trayectoria
             </p>
             {trayectoria.map((item, i) => (
@@ -452,8 +461,8 @@ function CVPage() {
 
           {/* Formación */}
           <div>
-            <p className="mb-8" style={{ fontFamily: "WonderfulParty", fontSize: "2rem", color: "#C01347" }}>
-              formacion academica
+            <p className="mb-8" style={{ fontFamily: "Hariki", fontSize: "2rem", color: "#C01347" }}>
+              formación académica
             </p>
             {formacion.map((item, i) => (
               <div key={i} className="mb-8 pb-8" style={divider}>
@@ -750,7 +759,7 @@ function ContactPage() {
         className="flex flex-col items-center text-center z-10 px-8"
       >
         <p className="mb-4 text-xs uppercase" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 100, letterSpacing: "0.35em", color: "rgba(242,232,162,0.5)" }}>
-          (03)
+          (04)
         </p>
         <h2 className="mb-14" style={{ fontFamily: "WonderfulParty", fontSize: "clamp(3.5rem, 10vw, 7rem)", color: "#F2E8A2", lineHeight: 1 }}>
           contacto
