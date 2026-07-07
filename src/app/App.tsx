@@ -12,7 +12,6 @@ import starImg4 from "@/imports/estrellas5.png";
 import img05 from "@/imports/DSC_0781.jpeg";
 import img06 from "@/imports/DSC_0783.jpeg";
 import img07 from "@/imports/DSC_0785.jpeg";
-import img08 from "@/imports/IMG_1072.png";
 import img09 from "@/imports/IMG_1073.png";
 import img10 from "@/imports/IMG_1074.png";
 import img11 from "@/imports/IMG_7587.webp";
@@ -63,7 +62,7 @@ const projects: Project[] = [
     duration: "1 min con 49 segundos",
     description:
       "Video de mixed media que interviene imágenes cinematográficas para cuestionar la representación de la intimidad sáfica. A partir de su apropiación y desplazamiento, la pieza abre una tensión entre lo que se muestra y lo que se busca recuperar desde la experiencia propia.",
-    images: [img08, img09, img10],
+    images: [ img09, img10],
   },
   {
     id: 3,
