@@ -40,6 +40,7 @@ type Project = {
   description: string;
   credit?: string;
   images: string[];
+  videoUrl?: string;
 };
 
 const projects: Project[] = [
@@ -64,6 +65,7 @@ const projects: Project[] = [
     description:
       "Video de mixed media que interviene imágenes cinematográficas para cuestionar la representación de la intimidad sáfica. A partir de su apropiación y desplazamiento, la pieza abre una tensión entre lo que se muestra y lo que se busca recuperar desde la experiencia propia.",
     images: [ img09, img10, img08],
+    videoUrl: "https://www.youtube.com/embed/GdpEdThXAIg",
   },
   {
     id: 3,
@@ -157,8 +159,12 @@ function PillBtn({
         border: `1px solid ${active ? base : `${base}55`}`,
         borderRadius: "999px",
         padding: "5px 20px",
-        fontFamily: "'Josefin Sans', sans-serif",
-        fontWeight: 100,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        lineHeight: 1,
+        fontFamily: "Hariki",
+        fontWeight: 800,
         fontSize: "0.68rem",
         letterSpacing: "0.18em",
         textTransform: "uppercase" as const,
@@ -181,7 +187,7 @@ function Nav({ page, setPage, onCream }: { page: Page; setPage: (p: Page) => voi
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 pt-3 pb-2">
         <button onClick={() => setPage("inicio")} className="flex items-center gap-1.5 group">
           <Mariquita size={66} />
           <span
@@ -486,6 +492,117 @@ function CVPage() {
   );
 }
 
+// ── Image carousel ──────────────────────────────────────────────────────────
+
+function Carousel({ images, alt }: { images: string[]; alt: string }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setIndex(0);
+  }, [images]);
+
+  if (images.length === 0) return null;
+
+  const goTo = (i: number) => setIndex((i + images.length) % images.length);
+
+  return (
+    <div className="relative w-full">
+      <div className="relative w-full overflow-hidden" style={{ background: "rgba(192,19,71,0.04)" }}>
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={index}
+            src={images[index]}
+            alt={`${alt} — imagen ${index + 1}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+            style={{ display: "block" }}
+          />
+        </AnimatePresence>
+
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={() => goTo(index - 1)}
+              aria-label="Imagen anterior"
+              className="absolute top-1/2 left-2 -translate-y-1/2 flex items-center justify-center transition-opacity hover:opacity-100"
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: "50%",
+                background: "rgba(245,240,234,0.85)",
+                color: "#C01347",
+                opacity: 0.75,
+                fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontSize: "1rem",
+                lineHeight: 1,
+              }}
+            >
+              ‹
+            </button>
+            <button
+              onClick={() => goTo(index + 1)}
+              aria-label="Imagen siguiente"
+              className="absolute top-1/2 right-2 -translate-y-1/2 flex items-center justify-center transition-opacity hover:opacity-100"
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: "50%",
+                background: "rgba(245,240,234,0.85)",
+                color: "#C01347",
+                opacity: 0.75,
+                fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontSize: "1rem",
+                lineHeight: 1,
+              }}
+            >
+              ›
+            </button>
+          </>
+        )}
+      </div>
+
+      {images.length > 1 && (
+        <div className="flex justify-center gap-2 mt-3">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Ir a imagen ${i + 1}`}
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: i === index ? "#C01347" : "rgba(192,19,71,0.25)",
+                transition: "background 0.2s",
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function VideoEmbed({ url, title }: { url: string; title: string }) {
+  return (
+    <div
+      className="relative w-full"
+      style={{ aspectRatio: "16 / 9", background: "#000" }}
+    >
+      <iframe
+        src={url}
+        title={title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+      />
+    </div>
+  );
+}
+
 // ── Portfolio page — 3-panel layout ─────────────────────────────────────────
 
 function PortfolioPage() {
@@ -591,15 +708,22 @@ function PortfolioPage() {
               transition={{ duration: 0.35 }}
               className="p-8 flex flex-col gap-6"
             >
-              {activeProject.images.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`${activeProject.title} — imagen ${i + 1}`}
-                  className="w-full"
-                  style={{ display: "block" }}
-                />
-              ))}
+              {activeProject.videoUrl ? (
+                <>
+                  <VideoEmbed url={activeProject.videoUrl} title={activeProject.title} />
+                  <Carousel images={activeProject.images} alt={activeProject.title} />
+                </>
+              ) : (
+                activeProject.images.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`${activeProject.title} — imagen ${i + 1}`}
+                    className="w-full"
+                    style={{ display: "block" }}
+                  />
+                ))
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -728,11 +852,18 @@ function PortfolioPage() {
           )}
         </div>
 
-        {/* Images */}
+        {/* Video + Images */}
         <div className="px-6 flex flex-col gap-4">
-          {activeProject.images.map((src, i) => (
-            <img key={i} src={src} alt={`${activeProject.title} — imagen ${i + 1}`} className="w-full" />
-          ))}
+          {activeProject.videoUrl ? (
+            <>
+              <VideoEmbed url={activeProject.videoUrl} title={activeProject.title} />
+              <Carousel images={activeProject.images} alt={activeProject.title} />
+            </>
+          ) : (
+            activeProject.images.map((src, i) => (
+              <img key={i} src={src} alt={`${activeProject.title} — imagen ${i + 1}`} className="w-full" />
+            ))
+          )}
         </div>
       </div>
     </>
