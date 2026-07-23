@@ -41,6 +41,7 @@ type Project = {
   credit?: string;
   images: string[];
   videoUrl?: string;
+  reelUrl?: string;
 };
 
 const projects: Project[] = [
@@ -53,7 +54,7 @@ const projects: Project[] = [
     description:
       "Pintura corporal que explora la ausencia desde el cuerpo como mapa. A través de marcas que señalan memorias sensoriales, las líneas trazadas convierten el cuerpo en una brújula desde la cual la ausencia puede recorrerse y tomar forma.",
     credit: "Colaboración con Bugozen",
-    images: [img05, img06, img07],
+    images: [img07, img06, img05],
   },
   {
     id: 2,
@@ -89,6 +90,7 @@ const projects: Project[] = [
       "Videoperformance que explora el hogar como una construcción afectiva. A través de un espacio textil y una acción colectiva, el cuerpo se vuelve refugio, proponiendo el hogar como algo que se construye en los vínculos.",
     credit: "Registro: Lucero Tepox",
     images: [img15, img14, img16],
+    videoUrl: "https://www.youtube.com/embed/ft_33GQWi_s?si=k42XhsZMCiu_oUow",
   },
   {
     id: 5,
@@ -102,6 +104,7 @@ const projects: Project[] = [
       "Video performance que explora las relaciones sáficas y la tensión de habitar el espacio público desde el afecto. A través de un dispositivo textil compartido, los cuerpos se aproximan, se sostienen y negocian su visibilidad frente a la mirada social.",
     credit: "Registro: Mar López",
     images: [img17, img18, img19],
+    reelUrl: "https://www.instagram.com/reel/DaOlLPVB75J/",
   },
 ];
 
@@ -501,13 +504,24 @@ function Carousel({ images, alt }: { images: string[]; alt: string }) {
     setIndex(0);
   }, [images]);
 
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [images.length, index]);
+
   if (images.length === 0) return null;
 
   const goTo = (i: number) => setIndex((i + images.length) % images.length);
 
   return (
     <div className="relative w-full">
-      <div className="relative w-full overflow-hidden" style={{ background: "rgba(192,19,71,0.04)" }}>
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ background: "rgba(192,19,71,0.04)", aspectRatio: "16 / 9" }}
+      >
         <AnimatePresence mode="wait">
           <motion.img
             key={index}
@@ -517,8 +531,8 @@ function Carousel({ images, alt }: { images: string[]; alt: string }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="w-full"
-            style={{ display: "block" }}
+            className="w-full h-full"
+            style={{ display: "block", objectFit: "cover", position: "absolute", inset: 0 }}
           />
         </AnimatePresence>
 
@@ -599,6 +613,31 @@ function VideoEmbed({ url, title }: { url: string; title: string }) {
         allowFullScreen
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
       />
+    </div>
+  );
+}
+
+function InstagramEmbed({ url }: { url: string }) {
+  useEffect(() => {
+    const w = window as any;
+    if (w.instgrm) {
+      w.instgrm.Embeds.process();
+    } else {
+      const script = document.createElement("script");
+      script.src = "//www.instagram.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, [url]);
+
+  return (
+    <div className="w-full flex justify-center">
+      <blockquote
+        className="instagram-media"
+        data-instgrm-permalink={url}
+        data-instgrm-version="14"
+        style={{ background: "#FFF", border: 0, borderRadius: "3px", margin: "0 auto", maxWidth: "540px", width: "100%" }}
+      ></blockquote>
     </div>
   );
 }
@@ -710,8 +749,13 @@ function PortfolioPage() {
             >
               {activeProject.videoUrl ? (
                 <>
-                  <VideoEmbed url={activeProject.videoUrl} title={activeProject.title} />
                   <Carousel images={activeProject.images} alt={activeProject.title} />
+                  <VideoEmbed url={activeProject.videoUrl} title={activeProject.title} />
+                </>
+              ) : activeProject.reelUrl ? (
+                <>
+                  <Carousel images={activeProject.images} alt={activeProject.title} />
+                  <InstagramEmbed url={activeProject.reelUrl} />
                 </>
               ) : (
                 activeProject.images.map((src, i) => (
@@ -856,8 +900,13 @@ function PortfolioPage() {
         <div className="px-6 flex flex-col gap-4">
           {activeProject.videoUrl ? (
             <>
-              <VideoEmbed url={activeProject.videoUrl} title={activeProject.title} />
               <Carousel images={activeProject.images} alt={activeProject.title} />
+              <VideoEmbed url={activeProject.videoUrl} title={activeProject.title} />
+            </>
+          ) : activeProject.reelUrl ? (
+            <>
+              <Carousel images={activeProject.images} alt={activeProject.title} />
+              <InstagramEmbed url={activeProject.reelUrl} />
             </>
           ) : (
             activeProject.images.map((src, i) => (
