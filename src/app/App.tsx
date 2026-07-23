@@ -3,32 +3,31 @@ import { motion, AnimatePresence } from "motion/react";
 import { Instagram, Mail, Phone, X, Menu } from "lucide-react";
 
 import mariquitaImg from "@/imports/mariquita.png";
-import marFoto from "@/imports/contraportada_Mar.jpg";
+import marFoto from "@/imports/contraportada_Mar.webp";
 import starImg0 from "@/imports/estrellas1.png";
 import starImg1 from "@/imports/estrellas2.png";
 import starImg2 from "@/imports/estrellas3.png";
 import starImg3 from "@/imports/estrellas4.png";
 import starImg4 from "@/imports/estrellas5.png";
-import img05 from "@/imports/DSC_0781.jpeg";
-import img06 from "@/imports/DSC_0783.jpeg";
-import img07 from "@/imports/DSC_0785.jpeg";
-import img08 from "@/imports/IMG_1072.png";
-import img09 from "@/imports/IMG_1073.png";
-import img10 from "@/imports/IMG_1074.png";
+import img05 from "@/imports/DSC_0781.webp";
+import img06 from "@/imports/DSC_0783.webp";
+import img07 from "@/imports/DSC_0785.webp";
+import img08 from "@/imports/IMG_1072.webp";
+import img09 from "@/imports/IMG_1073.webp";
+import img10 from "@/imports/IMG_1074.webp";
 import img11 from "@/imports/IMG_7587.webp";
 import img12 from "@/imports/IMG_7588.webp";
 import img13 from "@/imports/IMG_7589.webp";
-import img14 from "@/imports/IMG_4248.png";
-import img15 from "@/imports/IMG_0279.png";
-import img16 from "@/imports/IMG_0297.png";
-import img17 from "@/imports/IMG_7456.jpeg";
-import img18 from "@/imports/IMG_7677.jpeg";
-import img19 from "@/imports/IMG_7596.jpeg";
-
-import img_galeria1 from "@/imports/ExistirHastaDesbordar-51.png";
-import img_galeria2 from "@/imports/ExistirHastaDesbordar-77.png";
-import img_galeria3 from "@/imports/ExistirHastaDesbordar-5.png";
-import img_galeria4 from "@/imports/ExistirHastaDesbordar-98.png";
+import img14 from "@/imports/IMG_4248.webp";
+import img15 from "@/imports/IMG_0279.webp";
+import img16 from "@/imports/IMG_0297.webp";
+import img17 from "@/imports/IMG_7456.webp";
+import img18 from "@/imports/IMG_7677.webp";
+import img19 from "@/imports/IMG_7596.webp";
+import img_galeria1 from "@/imports/ExistirHastaDesbordar-51.webp";
+import img_galeria2 from "@/imports/ExistirHastaDesbordar-77.webp";
+import img_galeria3 from "@/imports/ExistirHastaDesbordar-5.webp";
+import img_galeria4 from "@/imports/ExistirHastaDesbordar-98.webp";
 
 type Page = "inicio" | "sobre" | "portafolio" | "cv" | "contacto";
 
@@ -115,7 +114,7 @@ const projects: Project[] = [
     imagesLabel: "Dispositivo en uso",
     reelUrl: "https://www.instagram.com/reel/DaOlLPVB75J/",
     images2: [img_galeria1, img_galeria2, img_galeria3, img_galeria4],
-    images2Label: "Montaje en galería",
+    images2Label: "Montaje en Casa Jurado",
   },
 ];
 
