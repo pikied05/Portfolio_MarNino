@@ -25,6 +25,11 @@ import img17 from "@/imports/IMG_7456.jpeg";
 import img18 from "@/imports/IMG_7677.jpeg";
 import img19 from "@/imports/IMG_7596.jpeg";
 
+import img_galeria1 from "@/imports/ExistirHastaDesbordar-51.png";
+import img_galeria2 from "@/imports/ExistirHastaDesbordar-77.png";
+import img_galeria3 from "@/imports/ExistirHastaDesbordar-5.png";
+import img_galeria4 from "@/imports/ExistirHastaDesbordar-98.png";
+
 type Page = "inicio" | "sobre" | "portafolio" | "cv" | "contacto";
 
 // ── Project data ─────────────────────────────────────────────────────────────
@@ -42,6 +47,9 @@ type Project = {
   images: string[];
   videoUrl?: string;
   reelUrl?: string;
+  imagesLabel?: string;
+  images2?: string[];
+  images2Label?: string;
 };
 
 const projects: Project[] = [
@@ -104,7 +112,10 @@ const projects: Project[] = [
       "Video performance que explora las relaciones sáficas y la tensión de habitar el espacio público desde el afecto. A través de un dispositivo textil compartido, los cuerpos se aproximan, se sostienen y negocian su visibilidad frente a la mirada social.",
     credit: "Registro: Mar López",
     images: [img17, img18, img19],
+    imagesLabel: "Dispositivo en uso",
     reelUrl: "https://www.instagram.com/reel/DaOlLPVB75J/",
+    images2: [img_galeria1, img_galeria2, img_galeria3, img_galeria4],
+    images2Label: "Montaje en galería",
   },
 ];
 
@@ -522,7 +533,7 @@ function Carousel({ images, alt }: { images: string[]; alt: string }) {
         className="relative w-full overflow-hidden"
         style={{ background: "rgba(192,19,71,0.04)", aspectRatio: "16 / 9" }}
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.img
             key={index}
             src={images[index]}
@@ -530,7 +541,7 @@ function Carousel({ images, alt }: { images: string[]; alt: string }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 1.1, ease: "easeInOut" }}
             className="w-full h-full"
             style={{ display: "block", objectFit: "cover", position: "absolute", inset: 0 }}
           />
@@ -752,12 +763,7 @@ function PortfolioPage() {
                   <Carousel images={activeProject.images} alt={activeProject.title} />
                   <VideoEmbed url={activeProject.videoUrl} title={activeProject.title} />
                 </>
-              ) : activeProject.reelUrl ? (
-                <>
-                  <Carousel images={activeProject.images} alt={activeProject.title} />
-                  <InstagramEmbed url={activeProject.reelUrl} />
-                </>
-              ) : (
+              ) : activeProject.images.length > 0 && !activeProject.reelUrl ? (
                 activeProject.images.map((src, i) => (
                   <img
                     key={i}
@@ -767,7 +773,27 @@ function PortfolioPage() {
                     style={{ display: "block" }}
                   />
                 ))
+              ) : (
+                <>
+                  {activeProject.imagesLabel && (
+                    <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(26,8,16,0.4)" }}>
+                      {activeProject.imagesLabel}
+                    </p>
+                  )}
+                  <Carousel images={activeProject.images} alt={activeProject.title} />
+                </>
               )}
+              {activeProject.images2 && (
+                <>
+                  {activeProject.images2Label && (
+                    <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(26,8,16,0.4)", marginTop: "0.5rem" }}>
+                      {activeProject.images2Label}
+                    </p>
+                  )}
+                  <Carousel images={activeProject.images2} alt={`${activeProject.title} — ${activeProject.images2Label ?? "vista adicional"}`} />
+                </>
+              )}
+              {activeProject.reelUrl && <InstagramEmbed url={activeProject.reelUrl} />}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -903,16 +929,31 @@ function PortfolioPage() {
               <Carousel images={activeProject.images} alt={activeProject.title} />
               <VideoEmbed url={activeProject.videoUrl} title={activeProject.title} />
             </>
-          ) : activeProject.reelUrl ? (
-            <>
-              <Carousel images={activeProject.images} alt={activeProject.title} />
-              <InstagramEmbed url={activeProject.reelUrl} />
-            </>
-          ) : (
+          ) : activeProject.images.length > 0 && !activeProject.reelUrl ? (
             activeProject.images.map((src, i) => (
               <img key={i} src={src} alt={`${activeProject.title} — imagen ${i + 1}`} className="w-full" />
             ))
+          ) : (
+            <>
+              {activeProject.imagesLabel && (
+                <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(26,8,16,0.4)" }}>
+                  {activeProject.imagesLabel}
+                </p>
+              )}
+              <Carousel images={activeProject.images} alt={activeProject.title} />
+            </>
           )}
+          {activeProject.images2 && (
+            <>
+              {activeProject.images2Label && (
+                <p style={{ fontFamily: "Helvetica Neue", fontWeight: 300, fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(26,8,16,0.4)", marginTop: "0.5rem" }}>
+                  {activeProject.images2Label}
+                </p>
+              )}
+              <Carousel images={activeProject.images2} alt={`${activeProject.title} — ${activeProject.images2Label ?? "vista adicional"}`} />
+            </>
+          )}
+          {activeProject.reelUrl && <InstagramEmbed url={activeProject.reelUrl} />}
         </div>
       </div>
     </>
