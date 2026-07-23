@@ -24,7 +24,7 @@ import img16 from "@/imports/IMG_0297.webp";
 import img17 from "@/imports/IMG_7456.webp";
 import img18 from "@/imports/IMG_7677.webp";
 import img19 from "@/imports/IMG_7596.webp";
-
+//nuevas imgs
 import imgGaleria1 from "@/imports/ExistirHastaDesbordar-51.webp";
 import imgGaleria2 from "@/imports/ExistirHastaDesbordar-77.webp";
 import imgGaleria3 from "@/imports/ExistirHastaDesbordar-5.webp";
