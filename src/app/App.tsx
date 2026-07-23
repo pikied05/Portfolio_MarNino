@@ -3,31 +3,27 @@ import { motion, AnimatePresence } from "motion/react";
 import { Instagram, Mail, Phone, X, Menu } from "lucide-react";
 
 import mariquitaImg from "@/imports/mariquita.png";
-import marFoto from "@/imports/contraportada_Mar.webp";
+import marFoto from "@/imports/contraportada_Mar.jpg";
 import starImg0 from "@/imports/estrellas1.png";
 import starImg1 from "@/imports/estrellas2.png";
 import starImg2 from "@/imports/estrellas3.png";
 import starImg3 from "@/imports/estrellas4.png";
 import starImg4 from "@/imports/estrellas5.png";
-import img05 from "@/imports/DSC_0781.webp";
-import img06 from "@/imports/DSC_0783.webp";
-import img07 from "@/imports/DSC_0785.webp";
-import img08 from "@/imports/IMG_1072.webp";
-import img09 from "@/imports/IMG_1073.webp";
-import img10 from "@/imports/IMG_1074.webp";
+import img05 from "@/imports/DSC_0781.jpeg";
+import img06 from "@/imports/DSC_0783.jpeg";
+import img07 from "@/imports/DSC_0785.jpeg";
+import img08 from "@/imports/IMG_1072.png";
+import img09 from "@/imports/IMG_1073.png";
+import img10 from "@/imports/IMG_1074.png";
 import img11 from "@/imports/IMG_7587.webp";
 import img12 from "@/imports/IMG_7588.webp";
 import img13 from "@/imports/IMG_7589.webp";
-import img14 from "@/imports/IMG_4248.webp";
-import img15 from "@/imports/IMG_0279.webp";
-import img16 from "@/imports/IMG_0297.webp";
-import img17 from "@/imports/IMG_7456.webp";
-import img18 from "@/imports/IMG_7677.webp";
-import img19 from "@/imports/IMG_7596.webp";
-import img_galeria1 from "@/imports/ExistirHastaDesbordar-51.webp";
-import img_galeria2 from "@/imports/ExistirHastaDesbordar-77.webp";
-import img_galeria3 from "@/imports/ExistirHastaDesbordar-5.webp";
-import img_galeria4 from "@/imports/ExistirHastaDesbordar-98.webp";
+import img14 from "@/imports/IMG_4248.png";
+import img15 from "@/imports/IMG_0279.png";
+import img16 from "@/imports/IMG_0297.png";
+import img17 from "@/imports/IMG_7456.jpeg";
+import img18 from "@/imports/IMG_7677.jpeg";
+import img19 from "@/imports/IMG_7596.jpeg";
 
 type Page = "inicio" | "sobre" | "portafolio" | "cv" | "contacto";
 
@@ -113,8 +109,8 @@ const projects: Project[] = [
     images: [img17, img18, img19],
     imagesLabel: "Dispositivo en uso",
     reelUrl: "https://www.instagram.com/reel/DaOlLPVB75J/",
-    images2: [img_galeria1, img_galeria2, img_galeria3, img_galeria4],
-    images2Label: "Montaje en Casa Jurado",
+    images2: [], // ← agrega aquí las imágenes de la pieza montada en galería (ej: [imgGaleria1, imgGaleria2])
+    images2Label: "Montaje en galería",
   },
 ];
 
@@ -200,7 +196,14 @@ function Nav({ page, setPage, onCream }: { page: Page; setPage: (p: Page) => voi
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 pt-3 pb-2">
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 pt-3 pb-2"
+        style={{
+          background: onCream ? "rgba(245,240,234,0.75)" : "rgba(232,90,157,0.55)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+        }}
+      >
         <button onClick={() => setPage("inicio")} className="flex items-center gap-1.5 group">
           <Mariquita size={66} />
           <span
@@ -389,6 +392,8 @@ function AboutPage() {
                   src={marFoto}
                   alt="Mariana Hernández Niño"
                   className="w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                   style={{ aspectRatio: "3/4", filter: "saturate(0.85) contrast(1.05)" }}
                 />
                 <div className="absolute -bottom-4 -right-4 w-20 h-20 z-[-1]" style={{ background: "#E85A9D", opacity: 0.2 }} />
@@ -537,6 +542,8 @@ function Carousel({ images, alt }: { images: string[]; alt: string }) {
             key={index}
             src={images[index]}
             alt={`${alt} — imagen ${index + 1}`}
+            loading="lazy"
+            decoding="async"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -769,6 +776,8 @@ function PortfolioPage() {
                     src={src}
                     alt={`${activeProject.title} — imagen ${i + 1}`}
                     className="w-full"
+                    loading="lazy"
+                    decoding="async"
                     style={{ display: "block" }}
                   />
                 ))
@@ -930,7 +939,7 @@ function PortfolioPage() {
             </>
           ) : activeProject.images.length > 0 && !activeProject.reelUrl ? (
             activeProject.images.map((src, i) => (
-              <img key={i} src={src} alt={`${activeProject.title} — imagen ${i + 1}`} className="w-full" />
+              <img key={i} src={src} alt={`${activeProject.title} — imagen ${i + 1}`} className="w-full" loading="lazy" decoding="async" />
             ))
           ) : (
             <>
